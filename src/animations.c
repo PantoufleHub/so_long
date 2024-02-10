@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 09:35:25 by aperron           #+#    #+#             */
-/*   Updated: 2024/01/29 13:14:30 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/06 14:29:53 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 t_anim	*get_slime_idle_anim(t_game *game)
 {
-	t_anim	*anim;
+	t_anim		*anim;
+	static int	slime_frame = 0;
 
 	anim = malloc(sizeof(t_anim));
-	anim->current_frame = 0;
+	slime_frame += 4;
+	anim->current_frame = slime_frame % 9;
 	anim->nb_frames = 9;
-	anim->time_update = 48;
+	anim->time_update = 40;
 	anim->timer = 0;
 	anim->frames = game->anim_frames->slime_idle;
 	anim->dimensions.width = 64;

@@ -6,7 +6,7 @@
 /*   By: aperron <aperron@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/30 10:00:55 by aperron           #+#    #+#             */
-/*   Updated: 2024/02/01 11:48:30 by aperron          ###   ########.fr       */
+/*   Updated: 2024/02/06 14:07:42 by aperron          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ void	validate_map1(const char *file, int *cols, int *rows)
 
 	fd = open(file, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line)
+		exit_with_error_message("Empty file!");
 	*rows = 0;
 	*cols = ft_strlen(line) - 1;
 	while (line)
